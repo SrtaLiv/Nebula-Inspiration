@@ -27,7 +27,7 @@ class User extends Authenticatable
         'username',
     ];
 
-    // uno a muchos
+    // uno a muchos, user_id como FK 
     public function images()
     {
         return $this->hasMany(Image::class);

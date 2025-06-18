@@ -25,6 +25,10 @@ class RoleSeeder extends Seeder
             $user->assignRole($adminRole);
         }
 
+        $user->images()->create([
+            'url' => 'ruta/de/la/imagen.jpg'
+        ]);
+
         // ######################## ADMIN ########################
 
         $admin = User::factory()->create([
@@ -32,7 +36,7 @@ class RoleSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => Hash::make('olivia123'),
         ]);
-        
+
         $admin->assignRole('admin');
     }
 }

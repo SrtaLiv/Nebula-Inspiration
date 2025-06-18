@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\UserController;
@@ -17,5 +18,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+// Subir imagenes
+Route::post('/upload-single', [UploadController::class, 'uploadSingle']);
+Route::post('/upload-multiple', [UploadController::class, 'uploadMultiple']);
+
+
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';

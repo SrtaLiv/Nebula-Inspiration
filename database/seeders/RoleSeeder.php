@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -15,19 +14,19 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // Crear el rol si no existe
-        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        // Crear rol si no existe
+        Role::firstOrCreate(['name' => 'admin']);
+        Role::firstOrCreate(['name' => 'user']);
 
-        // Buscar usuario y asignar rol
-        $user = User::find(2);
+        $user = User::where('email', 'olivia@example.com')->first();
 
-        if ($user && !$user->hasRole('admin')) {
-            $user->assignRole($adminRole);
+        if ($user) {
+            // Le asigno imagen solo si existe el usuario
+            $user->images()->create([
+                'url' => 'ruta/de/la/imagen.jpg'
+            ]);
         }
 
-        $user->images()->create([
-            'url' => 'ruta/de/la/imagen.jpg'
-        ]);
 
         // ######################## ADMIN ########################
 

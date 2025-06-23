@@ -7,19 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations?
-     * // 
-     * 
+     * Run the migrations.
      */
-    
-    // Crear la tabla
+
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        //  MUCHOS A MUCHOS
+        Schema::create('folder_image', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
-            $table->string('description');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('folder_id')->constrained()->onDelete('cascade');
+            $table->foreignId('image_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('folder_image');
     }
 };

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Folder extends Model
@@ -13,5 +14,12 @@ class Folder extends Model
         'last_name',
         'age',
         'username',
-    ];// como estas? gtodo bien?
+    ];
+    use HasFactory;
+
+    // pertenece a muchas imagenes
+    public function images()
+    {
+        return $this->belongsToMany(Image::class);
+    }
 }

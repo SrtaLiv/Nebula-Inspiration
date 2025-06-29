@@ -3,27 +3,26 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Asegurarse de que el rol admin exista
-        Role::firstOrCreate(['name' => 'admin']);
 
-        // Instancio un user administrador
-        $admin = User::create([
+        // ######################## ADMIN ########################
+
+        $admin = User::updateOrCreate([
             'name' => 'Olivia',
-            'email' => 'olivia@example.com',
+            'last_name' => 'Todesco',
+            'username' => 'olivia123',
+            'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
+            'age' => 20,
         ]);
 
-        $admin->assignRole('admin');
+        if (!$admin->hasRole('admin')) {
+            $admin->assignRole('admin');
+        }
     }
 }

@@ -30,7 +30,6 @@ class UploadController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Imagen subida correctamente');
-
         // return response()->json(['mensaje' => 'Imagen subida correctamente']);
     }
 

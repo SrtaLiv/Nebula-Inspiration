@@ -14,7 +14,7 @@ class ImageFolderSeeder extends Seeder
      */
     public function run(): void
     {
-        // Creamos 10 imagenes, si es que esta vacio
+        // Creamos 10 imagenes
         if (Image::count() === 0) {
             Image::factory()->count(10)->create();
         }

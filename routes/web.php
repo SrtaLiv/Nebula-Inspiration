@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 
 // Obtener las imagenes de la base de datos
 Route::get('home', [ImageController::class, 'home']);
+Route::get('/home/{tagId?}', [ImageController::class, 'getImagesByTag']);
 
 // Route::get('/home', function () {
 //     $images = Route::get('/images', [ImageController::class, 'getAllImages']);
@@ -15,7 +16,6 @@ Route::get('home', [ImageController::class, 'home']);
 //         'images' => $images
 //     ]);
 // })->name('home2');
-
 
 
 // Asignar rol de admin a un usuario

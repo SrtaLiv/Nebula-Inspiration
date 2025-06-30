@@ -2,11 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Image;
+use App\Models\Tag;
 use App\Models\User;
 use Database\Factories\UserFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,7 +30,14 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RoleSeeder::class,
             AdminSeeder::class,
-            ImageFolderSeeder::class
+            ImageFolderSeeder::class,
+            TagSeeder::class,
         ]);
+
+        Image::factory(1)->create([
+            // 'is_public' => true,
+            'user_id' => 1
+        ]);
+
     }
 }

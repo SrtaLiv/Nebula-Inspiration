@@ -34,10 +34,10 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
         ]);
 
-        Image::factory(1)->create([
-            // 'is_public' => true,
-            'user_id' => 1
-        ]);
+        // Image::factory(1)->create([
+        //     // 'is_public' => true,
+        //     'user_id' => 1
+        // ]);
 
     }
 }

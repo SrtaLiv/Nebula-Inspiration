@@ -22,9 +22,15 @@ class Image extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-      // pertenece a muchas folders
-      public function folders()
-      {
-          return $this->belongsToMany(Folder::class);
-      }
+    // pertenece a muchas folders
+    public function folders()
+    {
+        return $this->belongsToMany(Folder::class);
+    }
+
+    // Las imagenes son likeadas por usuarios
+    public function likedByUser()
+    {
+        return $this->belongsToMany(User::class, 'likes');
+    }
 }

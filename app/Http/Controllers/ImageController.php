@@ -60,7 +60,7 @@ class ImageController extends Controller
         $tags = Tag::all();
 
         return Inertia::render(
-            'home2', //nomrbe del archivo
+            'home', //nomrbe del archivo
             [
                 'images' => $images,
                 'tags' => $tags
@@ -71,15 +71,16 @@ class ImageController extends Controller
     public function getImagesByTag($tagId = null)
     {
         try {
+            // Si existe el tagId, ejecuta la funcion
             $images = Image::when($tagId, function ($query) use ($tagId) {
                 $query->whereHas('tags', function ($q) use ($tagId) {
-                    $q->where('tags.id', $tagId); 
+                    $q->where('tags.id', $tagId);
                 });
             })->get();
 
             $tags = Tag::all();
 
-            return Inertia::render('home2', [
+            return Inertia::render('home', [
                 'images' => $images,
                 'tags' => $tags,
                 'activeTag' => $tagId,

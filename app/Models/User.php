@@ -33,6 +33,12 @@ class User extends Authenticatable
         return $this->hasMany(Image::class);
     }
 
+    // Los usuarios LIKEAN imagenes
+    public function likedImages()
+    {
+        return $this->belongsToMany(Image::class, 'likes');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -41,6 +47,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'provider_token',
+        'provider_refresh_token'
     ];
 
     /**
